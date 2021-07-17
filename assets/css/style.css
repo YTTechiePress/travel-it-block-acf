@@ -1,3 +1,76 @@
 .travel-it-block {
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: 20px 200px 1fr auto;
     border: 2px solid green;
+}
+
+.travel-it-block span.day {
+    display: inline-block;
+    height: 70px;
+    width: 70px;
+    border-radius: 100%;
+    margin-top: 30px;
+    margin-left: -35px;
+    text-align: center;
+    padding: 18px 12px 12px 12px;
+    background: green;
+    color: white;
+}
+
+.travel-it-block .img {
+    display: block;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.travel-it-block .img img {
+    display: block;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.travel-it-block .content-info {
+    font-weight: 100;
+}
+
+.travel-it-block .services-info {
+    font-size: 0.85rem;
+    margin: 0;
+    border-left: 1px solid green;
+    padding: 0 30px 30px 30px;
+}
+
+.travel-it-block .services-info p {
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+.travel-it-block .services-info > p > span {
+    display: flex;
+    align-self: center;
+    width: 8px;
+    height: 8px;
+    background: lightgrey;
+    border-radius: 100%;
+    margin-left: 20px;
+    border: 1px solid transparent;
+    position: relative;
+}
+
+.travel-it-block .services-info > p > span:after {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    left: -6px;
+    bottom: -6px;
+    content: ' ';
+    border: 1px solid green;
+    border-radius: 100%;
+}
+
+.travel-it-block .services-info > p > span.available {
+    background: green;
 }

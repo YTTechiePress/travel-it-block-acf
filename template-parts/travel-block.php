@@ -32,23 +32,58 @@ $overnight           = get_field('overnight');
 
  <div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
     <div>
-        <span><?php echo esc_attr($daytime); ?></span>
+        <span class="day"><?php echo esc_attr($daytime); ?></span>
     </div>
-    <?php // print_r(  $image ); ?>
 
-    <?php echo wp_get_attachment_image( $image['id'], 'full' )?>
-    <!-- <img src="<?php echo esc_attr($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" srcset=""> -->
+    <div class="img">
+        <?php echo wp_get_attachment_image( $image['id'], 'full' )?>
+    </div>
+
     <div class="content-info">
-        <p><?php echo esc_attr($days_activity_title); ?></p>
-        <p><?php echo esc_attr($am_decription); ?></p>
-        <p><?php echo esc_attr($pm_decription); ?></p>
-        <p><?php echo esc_attr($overnight); ?></p>
+
+        <?php if( !empty($days_activity_title) ) {?>
+            <p><?php echo esc_attr($days_activity_title); ?></p>
+        <?php } ?>
+
+        <?php if( !empty($am_decription) ) {?>
+            <p><strong>AM/ </strong><?php echo esc_attr($am_decription); ?></p>
+        <?php } ?>
+
+        <?php if( !empty($pm_decription) ) {?>
+            <p><strong>PM/ </strong><?php echo esc_attr($pm_decription); ?></p>
+        <?php } ?>
+
+        <?php if( !empty($overnight) ) {?>
+            <p><strong>Overnight/ </strong><?php echo esc_attr($overnight); ?></p>
+        <?php } ?>
+
     </div>
     <div class="services-info">
-        <p>Breakfast<span></span></p>
-        <p>Lunch<span></span></p>
-        <p>Dinner<span></span></p>
 
-        <?php // print_r( $available_service ); ?>
+        <?php 
+            if( $available_service['breakfast'] == 1 ) {
+                $bclass = 'available';
+            } else {
+                $bclass = 'unavailable';
+            }
+
+            if( $available_service['lunch'] == 1 ) {
+                $lclass = 'available';
+            } else {
+                $lclass = 'unavailable';
+            }
+
+            if( $available_service['dinner'] == 1 ) {
+                $dclass = 'available';
+            } else {
+                $dclass = 'unavailable';
+            }
+
+        ?>
+
+        <p>Breakfast<span class="<?php echo $bclass; ?>"></span></p>
+        <p>Lunch<span class="<?php echo $lclass; ?>"></span></p>
+        <p>Dinner<span class="<?php echo $dclass; ?>"></span></p>
+        
     </div>
  </div>
